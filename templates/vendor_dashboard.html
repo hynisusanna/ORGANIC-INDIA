@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Vendor Dashboard - Street Food Marketplace{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-tachometer-alt me-2"></i>Vendor Dashboard</h2>
+    <a href="{{ url_for('vendor_orders') }}" class="btn btn-outline-primary">
+        <i class="fas fa-shopping-cart me-2"></i>My Orders
+    </a>
+</div>
+
+<!-- Filter Section -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Filter Materials</h5>
+        <form method="GET" class="row g-3">
+            <div class="col-md-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="category">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                        <option value="{{ category }}" {% if current_category == category %}selected{% endif %}>
+                            {{ category.title() }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="city" class="form-label">City</label>
+                <select class="form-select" id="city" name="city">
+                    <option value="">All Cities</option>
+                    {% for city in cities %}
+                        <option value="{{ city }}" {% if current_city == city %}selected{% endif %}>
+                            {{ city }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="search" class="form-label">Search</label>
+                <input type="text" class="form-control" id="search" name="search" 
+                       placeholder="Search materials..." value="{{ current_search }}">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">&nbsp;</label>
+                <button type="submit" class="btn btn-primary d-block w-100">
+                    <i class="fas fa-filter me-2"></i>Filter
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Materials Grid -->
+{% if materials %}
+    <div class="row">
+        {% for material in materials %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title">{{ material.name }}</h5>
+                            <span class="badge bg-secondary">{{ material.category.title() }}</span>
+                        </div>
+                        
+                        {% if material.description %}
+                            <p class="card-text text-muted small">{{ material.description }}</p>
+                        {% endif %}
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span><strong>Price:</strong></span>
+                                <span class="text-primary fw-bold">₹{{ "%.2f"|format(material.price_per_unit) }}/{{ material.unit }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span><strong>Stock:</strong></span>
+                                <span>{{ material.stock_quantity }} {{ material.unit }}s</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span><strong>Location:</strong></span>
+                                <span>{{ material.area }}, {{ material.city }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span><strong>Supplier:</strong></span>
+                                <span>{{ material.supplier.username }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ url_for('place_order', material_id=material.id) }}" class="btn btn-success w-100">
+                            <i class="fas fa-cart-plus me-2"></i>Place Order
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+        <h4>No materials found</h4>
+        <p class="text-muted">Try adjusting your filters or check back later for new listings.</p>
+    </div>
+{% endif %}
+{% endblock %}

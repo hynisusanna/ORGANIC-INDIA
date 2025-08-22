@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Orders - Street Food Marketplace{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>
+        <i class="fas fa-{% if user_type == 'vendor' %}shopping-cart{% else %}list{% endif %} me-2"></i>
+        {% if user_type == 'vendor' %}My Orders{% else %}Orders Received{% endif %}
+    </h2>
+    {% if user_type == 'vendor' %}
+        <a href="{{ url_for('vendor_dashboard') }}" class="btn btn-primary">
+            <i class="fas fa-search me-2"></i>Browse Materials
+        </a>
+    {% endif %}
+</div>
+
+{% if orders %}
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Material</th>
+                            {% if user_type == 'vendor' %}
+                                <th>Supplier</th>
+                            {% else %}
+                                <th>Vendor</th>
+                            {% endif %}
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Order Date</th>
+                            {% if user_type == 'supplier' %}
+                                <th>Actions</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>#{{ order.id }}</td>
+                                <td>
+                                    <div>
+                                        <strong>{{ order.material.name }}</strong>
+                                        <br>
+                                        <small class="text-muted">{{ order.material.category.title() }}</small>
+                                    </div>
+                                </td>
+                                {% if user_type == 'vendor' %}
+                                    <td>
+                                        {{ order.material.supplier.username }}
+                                        <br>
+                                        <small class="text-muted">{{ order.material.area }}, {{ order.material.city }}</small>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        {{ order.vendor.username }}
+                                        <br>
+                                        <small class="text-muted">{{ order.vendor.area }}, {{ order.vendor.city }}</small>
+                                    </td>
+                                {% endif %}
+                                <td>{{ order.quantity }} {{ order.material.unit }}s</td>
+                                <td>₹{{ "%.2f"|format(order.total_price) }}</td>
+                                <td>
+                                    <span class="badge 
+                                        {% if order.status == 'pending' %}bg-warning text-dark
+                                        {% elif order.status == 'confirmed' %}bg-info
+                                        {% elif order.status == 'delivered' %}bg-success
+                                        {% else %}bg-danger{% endif %}">
+                                        {{ order.status.title() }}
+                                    </span>
+                                </td>
+                                <td>{{ order.created_at.strftime('%d %b %Y') }}</td>
+                                {% if user_type == 'supplier' %}
+                                    <td>
+                                        {% if order.status == 'pending' %}
+                                            <div class="btn-group btn-group-sm">
+                                                <a href="{{ url_for('update_order_status', order_id=order.id, status='confirmed') }}" 
+                                                   class="btn btn-success btn-sm">Confirm</a>
+                                                <a href="{{ url_for('update_order_status', order_id=order.id, status='cancelled') }}" 
+                                                   class="btn btn-danger btn-sm">Cancel</a>
+                                            </div>
+                                        {% elif order.status == 'confirmed' %}
+                                            <a href="{{ url_for('update_order_status', order_id=order.id, status='delivered') }}" 
+                                               class="btn btn-primary btn-sm">Mark Delivered</a>
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                {% endif %}
+                            </tr>
+                            {% if order.delivery_address or order.notes %}
+                                <tr class="table-light">
+                                    <td></td>
+                                    <td colspan="{% if user_type == 'supplier' %}7{% else %}6{% endif %}">
+                                        {% if order.delivery_address %}
+                                            <small><strong>Delivery Address:</strong> {{ order.delivery_address }}</small><br>
+                                        {% endif %}
+                                        {% if order.notes %}
+                                            <small><strong>Notes:</strong> {{ order.notes }}</small>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
+        <h4>No orders found</h4>
+        {% if user_type == 'vendor' %}
+            <p class="text-muted">You haven't placed any orders yet.</p>
+            <a href="{{ url_for('vendor_dashboard') }}" class="btn btn-primary">
+                <i class="fas fa-search me-2"></i>Browse Materials
+            </a>
+        {% else %}
+            <p class="text-muted">You haven't received any orders yet.</p>
+            <a href="{{ url_for('add_material') }}" class="btn btn-primary">
+                <i class="fas fa-plus me-2"></i>Add Materials
+            </a>
+        {% endif %}
+    </div>
+{% endif %}
+{% endblock %}

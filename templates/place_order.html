@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Place Order - Street Food Marketplace{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0"><i class="fas fa-cart-plus me-2"></i>Place Order</h3>
+            </div>
+            <div class="card-body">
+                <!-- Material Details -->
+                <div class="card bg-light mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ material.name }}</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="mb-1"><strong>Category:</strong> {{ material.category.title() }}</p>
+                                <p class="mb-1"><strong>Price:</strong> ₹{{ "%.2f"|format(material.price_per_unit) }}/{{ material.unit }}</p>
+                                <p class="mb-1"><strong>Available Stock:</strong> {{ material.stock_quantity }} {{ material.unit }}s</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-1"><strong>Supplier:</strong> {{ material.supplier.username }}</p>
+                                <p class="mb-1"><strong>Location:</strong> {{ material.area }}, {{ material.city }}</p>
+                                {% if material.description %}
+                                    <p class="mb-1"><strong>Description:</strong> {{ material.description }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Form -->
+                <form method="POST" id="orderForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="quantity" class="form-label">Quantity ({{ material.unit }}s)</label>
+                            <input type="number" class="form-control" id="quantity" name="quantity" 
+                                   min="1" max="{{ material.stock_quantity }}" required>
+                            <div class="form-text">Maximum available: {{ material.stock_quantity }} {{ material.unit }}s</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="total_price" class="form-label">Total Price</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="text" class="form-control" id="total_price" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="delivery_address" class="form-label">Delivery Address</label>
+                        <textarea class="form-control" id="delivery_address" name="delivery_address" 
+                                  rows="3" required placeholder="Enter your complete delivery address"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Additional Notes (Optional)</label>
+                        <textarea class="form-control" id="notes" name="notes" rows="2"
+                                  placeholder="Any special instructions for the supplier"></textarea>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('vendor_dashboard') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Materials
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-shopping-cart me-2"></i>Place Order
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceInput = document.getElementById('total_price');
+    const pricePerUnit = {{ material.price_per_unit }};
+    
+    function updateTotalPrice() {
+        const quantity = parseInt(quantityInput.value) || 0;
+        const total = quantity * pricePerUnit;
+        totalPriceInput.value = total.toFixed(2);
+    }
+    
+    quantityInput.addEventListener('input', updateTotalPrice);
+    
+    // Initialize total price
+    updateTotalPrice();
+});
+</script>
+{% endblock %}

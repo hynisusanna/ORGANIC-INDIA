@@ -1,0 +1,687 @@
+/* Custom styles for Street Food Marketplace */
+
+/* Hero section */
+.hero-section {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+}
+
+/* Card hover effects */
+.card {
+    transition: transform 0.5s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: translateY(-17px);
+    box-shadow: 0 4px 8px rgba(3px, 4px, 8px, 0.1);
+}
+
+/* Status badges */
+.badge {
+    font-size: 0.75rem;
+}
+
+/* Table improvements */
+.table-responsive {
+    border-radius: 0.375rem;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: var(--bs-gray-700);
+}
+
+/* Form enhancements */
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Button improvements */
+.btn {
+    font-weight: 500;
+    border-radius: 0.375rem;
+}
+
+.btn-group-sm > .btn,
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Statistics cards */
+.card.bg-primary,
+.card.bg-success,
+.card.bg-info {
+    border: none;
+}
+
+.card.bg-primary .card-body,
+.card.bg-success .card-body,
+.card.bg-info .card-body {
+    padding: 1.5rem;
+}
+
+/* Material cards */
+.material-card {
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.material-card:hover {
+    border-color: var(--bs-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar enhancements */
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Alert improvements */
+.alert {
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
+.alert-dismissible .btn-close {
+    padding: 0.75rem;
+}
+
+/* Empty state styling */
+.text-center.py-5 {
+    padding: 3rem 1rem !important;
+}
+
+.text-center.py-5 i {
+    opacity: 0.5;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1rem !important;
+    }
+    
+    .hero-section .display-4 {
+        font-size: 2rem;
+    }
+    
+    .btn-group .btn {
+        margin-bottom: 0.5rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+}
+
+/* Loading states */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Custom scrollbar for tables */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: var(--bs-gray-100);
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: var(--bs-gray-400);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-gray-500);
+}
+
+/* Price highlighting */
+.text-primary.fw-bold {
+    font-size: 1.1rem;
+}
+
+/* Category badges */
+.badge.bg-secondary {
+    background-color: var(--bs-gray-600) !important;
+}
+
+/* Order status colors */
+.badge.bg-warning.text-dark {
+    color: var(--bs-dark) !important;
+}
+
+/* Form validation styles */
+.was-validated .form-control:valid {
+    border-color: var(--bs-success);
+}
+
+.was-validated .form-control:invalid {
+    border-color: var(--bs-danger);
+}
+
+/* Icon spacing */
+.fas, .far {
+    margin-right: 0.25rem;
+}
+
+/* Card footer improvements */
+.card-footer {
+    background-color: var(--bs-gray-50);
+    border-top: 1px solid var(--bs-border-color);
+}
+
+/* Utility classes */
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.cursor-pointer {
+    cursor: progress;
+}
+
+/* Index page specific styles */
+.index-welcome {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    color: white;
+}
+
+.index-welcome h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.index-welcome .lead {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.card-title {
+    color: var(--bs-primary);
+    font-weight: 600;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.how-it-works .card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.how-it-works .card-body {
+    padding: 1.5rem;
+}
+
+.how-it-works .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* New styles for welcome container and handshake emoji */
+.welcome-container {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.welcome-container h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.welcome-container .lead {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.handshake-emoji {
+    font-size: 1.5rem;
+    color: var(--bs-primary);
+}
+
+@media (max-width: 768px) {
+    .index-welcome h1 {
+        font-size: 1.75rem;
+    }
+
+    .index-welcome .lead {
+        font-size: 1rem;
+    }
+
+    .how-it-works .card-title {
+        font-size: 1.1rem;
+    }
+
+    .welcome-container h1 {
+        font-size: 1.75rem;
+    }
+
+    .welcome-container .lead {
+        font-size: 1rem;
+    }
+
+    .handshake-emoji {
+        font-size: 1.25rem;
+    }
+}
+.welcome-container {
+    border-radius: 30px;
+    background: #5d85fd; 
+    opacity: 0.8;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    animation: welcomeContainer 3s ease-in-out infinite;
+    box-shadow: 1px 2px 9px black,
+                4px 1px 9px black;
+    text-shadow: 1px 1px 1px black;
+}
+.text-center.mb-4 {
+    text-shadow: 1px 1px 9px black,
+                 0 1px 25px rgb(0, 139, 32),
+                 0 0 50px black;
+}
+@keyframes welcomeContainer {
+    0%, 100% {
+        transform: translateY(0);   /* starting point */
+    }
+    50% {
+        transform: translateY(-20px); /* move up */
+    }
+}
+.logo-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* hides text until it slides out */
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+    vertical-align: middle;
+}
+.navbar-brand {
+    position: absolute;
+    top: 50%;
+    left: -100%; /* start fully hidden to the left */
+    transform: translateY(-50%);
+    white-space: nowrap; /* keeps text in one line */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff; /* Bootstrap primary blue */
+    animation: navbarBrand 10s ease forwards;
+    animation-delay: 0.5s; /* small delay after logo loads */
+}
+
+@keyframes navbarBrand {
+    0% {
+        left:-4%;
+        opacity: 0;
+    }
+    50% {
+        left: 10%; /* slides past the logo */
+        opacity: 1;
+    }
+    100% {
+        left: 10%; /* stays in place */
+        opacity: 1;
+    }
+}
+.col-md-6.mb-4 {
+    border-radius: 50px;
+}
+
+/* Add Material page specific styles */
+.add-material-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 28px;
+    animation: glassFlipIn 1.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), inset 0 0 12px rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.add-material-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(93, 133, 253, 0.05));
+    pointer-events: none;
+    animation: subtleGlow 5s infinite ease-in-out;
+}
+
+@keyframes glassFlipIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) rotateX(20deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-15px) rotateX(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes subtleGlow {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.card-header {
+    background: linear-gradient(135deg, rgba(50, 80, 200, 0.95), rgba(0, 70, 180, 0.95));
+    color: white;
+    border-radius: 28px 28px 0 0;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.card-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        75deg,
+        transparent,
+        rgba(255, 255, 255, 0.5) 30%,
+        transparent 90%
+    );
+    animation: shimmerPulse 5s infinite ease-in-out;
+}
+
+@keyframes shimmerPulse {
+    0% {
+        transform: translateX(-100%) rotate(75deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(75deg);
+    }
+}
+
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    color: var(--bs-dark);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.form-control:hover, .form-select:hover {
+    transform: translateY(-3px);
+    border-color: rgba(93, 133, 253, 1);
+    box-shadow: 0 0 15px rgba(93, 133, 253, 0.6), inset 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+.form-control:focus, .form-select:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.3rem rgba(93, 133, 253, 0.7), 0 0 18px rgba(93, 133, 253, 0.5);
+    transform: scale(1.04);
+}
+
+.form-label {
+    position: relative;
+    color: var(--bs-gray-900);
+    font-weight: 700;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.form-label::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bs-primary), #5d85fd);
+    transition: width 0.3s ease-in-out;
+    border-radius: 3px;
+}
+
+.form-label:hover::after {
+    width: 100%;
+}
+
+.form-label:hover {
+    color: var(--bs-primary);
+    text-shadow: 0 0 8px rgba(93, 133, 253, 0.7);
+}
+
+.form-label[for="name"],
+.form-label[for="category"],
+.form-label[for="description"],
+.form-label[for="price_per_unit"] {
+    font-size: 1.1rem;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 255, 0.9));
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    z-index: 2;
+    animation: labelGlow 2s infinite ease-in-out;
+    box-shadow: 0 2px 8px rgba(93, 133, 253, 0.3);
+}
+
+@keyframes labelGlow {
+    0%, 100% {
+        text-shadow: 0 0 6px rgba(93, 133, 253, 0.6), 0 0 12px rgba(93, 133, 253, 0.4);
+        transform: translateY(0);
+    }
+    50% {
+        text-shadow: 0 0 12px rgba(93, 133, 253, 0.9), 0 0 24px rgba(93, 133, 253, 0.6);
+        transform: translateY(-3px);
+    }
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--bs-primary), #5d85fd);
+    border: none;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 0.8rem 1.8rem;
+    animation: neonPulse 2s infinite ease-in-out;
+    z-index: 1;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: -1;
+}
+
+.btn-primary:hover::before {
+    width: 600px;
+    height: 600px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 12px 36px rgba(93, 133, 253, 0.7);
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(93, 133, 253, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(93, 133, 253, 0.8);
+    }
+}
+
+.btn-secondary {
+    background: linear-gradient(90deg, var(--bs-gray-600), var(--bs-gray-800));
+    border: none;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 0.8rem 1.8rem;
+    z-index: 1;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: -1;
+}
+
+.btn-secondary:hover::before {
+    width: 600px;
+    height: 600px;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    position: relative;
+    animation: floatIn 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation-fill-mode: both;
+    margin-bottom: 1.8rem;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(35px) rotateX(15deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+.d-flex.justify-content-between {
+    animation: fadeIn 1.3s cubic-bezier(0.6, 0, 0.2, 1);
+    margin-top: 1.8rem;
+}
+
+@media (max-width: 768px) {
+    .add-material-card {
+        animation: glassFlipIn 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .form-group {
+        animation: floatIn 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        margin-bottom: 1.2rem;
+    }
+
+    .btn-primary::before, .btn-secondary::before {
+        width: 400px;
+        height: 400px;
+    }
+
+    .form-control:hover, .form-select:hover {
+        box-shadow: 0 0 12px rgba(93, 133, 253, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .btn-primary, .btn-secondary {
+        animation: none;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .form-control, .form-select {
+        padding: 0.6rem;
+    }
+
+    .form-label[for="name"],
+    .form-label[for="category"],
+    .form-label[for="description"],
+    .form-label[for="price_per_unit"] {
+        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+body{
+    background-color: rgb(233, 231, 231);
+}

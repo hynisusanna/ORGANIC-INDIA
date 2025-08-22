@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Street Food Marketplace{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="welcome-container">
+            <h1 class="text-center mb-4">Welcome to Organic India</h1>
+            <p class="text-center lead">Connecting Organic India vendors with trusted suppliers across India. Find the best raw materials at competitive prices with reliable delivery.</p>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">For Vendors</h3>
+                        <p class="card-text">Browse materials from verified suppliers, compare prices, and place orders for your Organic India business.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Find trusted suppliers</li>
+                            <li class="list-group-item">Compare prices</li>
+                            <li class="list-group-item">Easy ordering</li>
+                            <li class="list-group-item">Local delivery</li>
+                        </ul>
+                        {% if not session.user_id %}
+                            <a href="{{ url_for('register', user_type='vendor') }}" class="btn btn-primary mt-3">Join as Vendor</a>
+                        {% elif session.user_type == 'vendor' %}
+                            <a href="{{ url_for('vendor_dashboard') }}" class="btn btn-primary mt-3">Go to Dashboard</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">For Suppliers</h3>
+                        <p class="card-text">List your products, manage inventory, and connect with Organic India vendors in your area.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">List your products</li>
+                            <li class="list-group-item">Manage inventory</li>
+                            <li class="list-group-item">Track orders</li>
+                            <li class="list-group-item">Grow your business</li>
+                        </ul>
+                        {% if not session.user_id %}
+                            <a href="{{ url_for('register', user_type='supplier') }}" class="btn btn-primary mt-3">Join as Supplier</a>
+                        {% elif session.user_type == 'supplier' %}
+                            <a href="{{ url_for('supplier_dashboard') }}" class="btn btn-primary mt-3">Go to Dashboard</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-center mb-4">How It Works</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4 class="card-title">1. Register</h4>
+                        <p class="card-text">Sign up as a vendor or supplier with your location details.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4 class="card-title">2. Browse & Connect</h4>
+                        <p class="card-text">Vendors browse materials, suppliers list their products.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4 class="card-title">3. Trade</h4>
+                        <p class="card-text">Place orders, track delivery, and grow your business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
